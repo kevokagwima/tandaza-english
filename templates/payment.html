@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+{% endblock %}
+
+{% block title %}
+{{ heading }}
+{% endblock %}
+
+{% block body %}
+<div class="form-box">
+  <h1 id="heading">{{ heading }}</h1>
+  <form action="{{ url_for('stk_push', payment_type=heading) }}" method="post">
+    {{ form.csrf_token }}
+    <div class="input">
+      {{ form.amount.label }}
+      {{ form.amount(placeholder="Enter Deposit Amount", class="name") }}
+    </div>
+    <div class="input">
+      {{ form.phone_number.label }}
+      {{ form.phone_number(placeholder="Enter Phone Number", class="name") }}
+    </div>
+    <button class="btn" type="submit">
+      <span class="button--text">Deposit</span>
+    </button>
+  </form>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="../static/js/auth.js"></script>
+{% endblock %}

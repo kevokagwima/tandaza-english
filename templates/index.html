@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<div class="hero">
+  <div class="games-box">
+    <a href="{{ url_for('start_game') }}">
+      <button>Start Game</button>
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="../static/js/index.js"></script>
+<script src="../static/js/auth.js"></script>
+{% endblock %}
