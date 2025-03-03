@@ -175,13 +175,13 @@ def stk_push(payment_type):
   phone_number = form.phone_number.data[1:]
   amount = form.amount.data
   if payment_type == "Deposit":
-    deposit = Deposit(
+    payment = Payment(
       unique_id = random.randint(100000,999999),
       user = current_user.id,
       amount = amount,
       phone_number = phone_number
     )
-    db.session.add(deposit)
+    db.session.add(payment)
     db.session.commit()
   try:
     response = process_stk_push(access_token, amount, phone_number)
